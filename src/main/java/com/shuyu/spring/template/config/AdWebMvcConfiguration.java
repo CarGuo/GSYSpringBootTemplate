@@ -13,13 +13,9 @@ import java.util.List;
 @Configuration
 public class AdWebMvcConfiguration implements WebMvcConfigurer {
 
-    @Autowired
-    public UserMapper userMapper;
-
-
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-        argumentResolvers.add(new LoginUserHandlerMethodArgumentResolver(userMapper));
+        argumentResolvers.add(new LoginUserHandlerMethodArgumentResolver());
     }
 
     /**

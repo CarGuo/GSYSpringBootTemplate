@@ -75,8 +75,9 @@ public class ShiroConfig {
 
     /**
      * 添加注解支持
+     * 目前发现会导致 doGetAuthorizationInfo 执行两次
      */
-    @Bean
+    //@Bean
     public DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator() {
         DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
         // 强制使用cglib，防止重复代理和可能引起代理出错的问题

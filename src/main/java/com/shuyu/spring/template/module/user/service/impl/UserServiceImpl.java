@@ -1,7 +1,6 @@
 package com.shuyu.spring.template.module.user.service.impl;
 
 import com.shuyu.spring.template.module.user.entity.User;
-import com.shuyu.spring.template.module.user.entity.UserInfo;
 import com.shuyu.spring.template.module.user.mapper.UserMapper;
 import com.shuyu.spring.template.module.user.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -24,7 +23,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public UserInfo getUserInfo(String account) {
+    public User getUserInfo(String account) {
         return baseMapper.getUserInfo(account);
     }
 }

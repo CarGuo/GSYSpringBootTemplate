@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.shuyu.spring.template.module.role.entity.UserRole;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -106,4 +107,9 @@ public class User implements Serializable {
      */
     private Integer version;
 
+    /**
+     * 验证码
+     */
+    @TableField(exist = false)//表示该属性不为数据库表字段，但又是必须使用的。
+    private List<UserRole> roles;
 }
