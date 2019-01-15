@@ -7,4 +7,20 @@
         select * from user where account = #{account} and status != 3
     </select>
 
+
+    <resultMap type="com.shuyu.spring.template.module.user.entity.UserInfo" id="linkMap">
+        <!--不添加此项会导致adid在主数据总返回空-->
+        <result column="roleid" jdbcType="INTEGER" property="roleid" />
+        <collection property="roles" column="roleid" select="com.shuyu.spring.template.module.role.mapper.UserRoleMapper.getByRoleId"/>
+    </resultMap>
+
+
+    <select id="getUserInfo"
+            resultMap="linkMap"
+            resultType="com.shuyu.spring.template.module.user.entity.UserInfo">
+        select * from user where account = #{account} and status != 3
+    </select>
+
+
+
 </mapper>

@@ -1,9 +1,11 @@
 package com.shuyu.spring.template.module.user.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -103,6 +105,5 @@ public class User implements Serializable {
      * 保留字段
      */
     private Integer version;
-
 
 }

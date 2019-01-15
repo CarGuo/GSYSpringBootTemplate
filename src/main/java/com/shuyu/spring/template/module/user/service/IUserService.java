@@ -2,6 +2,7 @@ package com.shuyu.spring.template.module.user.service;
 
 import com.shuyu.spring.template.module.user.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.shuyu.spring.template.module.user.entity.UserInfo;
 
 /**
  * <p>
@@ -14,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface IUserService extends IService<User> {
 
     User getByAccount(String account);
+
+    UserInfo getUserInfo(String account);
 }

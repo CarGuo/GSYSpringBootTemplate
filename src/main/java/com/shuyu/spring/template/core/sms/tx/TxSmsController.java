@@ -60,6 +60,7 @@ public class TxSmsController {
             return ResponseUtil.serious();
         }
         if (result != null && result.result == 0) {
+            ///将验证码放入缓存
             CacheUtil.put(GlobalConfig.ID_CODE_KEY, user.getAccount(),
                     verifyCode, txSmsProperties.getTimeoutSecond(), txSmsProperties.getTimeoutSecond());
             return ResponseUtil.ok();
