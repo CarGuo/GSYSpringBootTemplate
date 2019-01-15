@@ -1,0 +1,50 @@
+server:
+  port: 8086
+
+spring:
+   ### json日期
+   jackson:
+      time-zone: GMT+8
+      date-format: yyyy-MM-dd HH:mm:ss
+   profiles:
+      active: dev
+
+global:
+  pagesize: 30
+
+### mybatis-plus 配置
+mybatis-plus:
+  mapperLocations: classpath*:com/shuyu/spring/template/**/*Mapper.xml
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not_empty
+      #驼峰下划线转换
+      column-underline: true
+      #逻辑删除配置
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      db-type: mysql
+    refresh: false
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+
+### 微信 配置
+
+wx:
+  miniapp:
+    configs:
+      appid: xxxxx #小程序id
+      appSecret: xxxxx  #小程序secret
+      msgDataFormat: JSON
+
+### 短信 配置
+
+sms:
+  tx:
+    appid: xxxx   #短信id
+    appkey: xxxx  #短信key
+    smsSign: xxx  #短信签名
+    templateId: xxxxx # 模板id
+    timeoutSecond: 180
