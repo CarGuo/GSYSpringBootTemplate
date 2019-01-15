@@ -43,8 +43,8 @@ wx:
 
 sms:
   tx:
-    appid: xxxx   #短信id
+    appid: 10000   #短信id
     appkey: xxxx  #短信key
     smsSign: xxx  #短信签名
-    templateId: xxxxx # 模板id
+    templateId: 10000 # 模板id
     timeoutSecond: 180

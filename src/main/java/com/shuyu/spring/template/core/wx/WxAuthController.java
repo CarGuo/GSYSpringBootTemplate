@@ -26,8 +26,6 @@ import java.util.Map;
 @RequestMapping("/wx/auth")
 public class WxAuthController {
 
-    private final Log logger = LogFactory.getLog(WxAuthController.class);
-
     @Autowired
     public WxMaService wxService;
 
