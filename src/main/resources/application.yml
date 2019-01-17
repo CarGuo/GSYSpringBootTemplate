@@ -48,3 +48,7 @@ sms:
     smsSign: xxx  #短信签名
     templateId: 10000 # 模板id
     timeoutSecond: 180
+
+context:
+  listener:
+    classes: com.shuyu.spring.template.config.ApplicationEventListener

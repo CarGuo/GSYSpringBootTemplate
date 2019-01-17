@@ -12,7 +12,7 @@
             timeToIdleSeconds="3600"
             timeToLiveSeconds="3600"
             overflowToDisk="true"
-            diskPersistent="false"
+            diskPersistent="true"
             diskExpiryThreadIntervalSeconds="120"
     />
 
@@ -29,7 +29,6 @@
            memoryStoreEvictionPolicy="LFU"
            transactionalMode="off">
     </cache>
-
 </ehcache>
 
 <!--
