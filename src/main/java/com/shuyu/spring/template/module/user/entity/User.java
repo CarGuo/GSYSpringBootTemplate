@@ -12,6 +12,9 @@ import com.shuyu.spring.template.module.role.entity.UserRole;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.*;
 
 /**
  * <p>
@@ -42,6 +45,8 @@ public class User implements Serializable {
     /**
      * 账号
      */
+    @NotNull
+    @Size(min=6, max=15, message = "名字长度必须在6和15之间")
     private String account;
 
     /**
@@ -58,13 +63,16 @@ public class User implements Serializable {
     private String name;
 
     /**
-     * 性别（1：男 2：女）
+     * 性别（0：男 1：女）
      */
+    @Range(min = 0, max = 1)
+    @Min(value=0)
     private Integer sex;
 
     /**
      * 电子邮件
      */
+    @Email
     private String email;
 
     /**
@@ -75,6 +83,7 @@ public class User implements Serializable {
     /**
      * 角色id
      */
+    @Range(min = 1, max = 10)
     private Integer roleid;
 
     /**
@@ -90,6 +99,7 @@ public class User implements Serializable {
     /**
      * 状态(1：启用  2：冻结  3：删除）
      */
+    @Range(min = 1, max = 3)
     private Integer status;
 
     /**

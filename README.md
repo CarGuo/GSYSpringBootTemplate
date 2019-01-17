@@ -12,3 +12,5 @@ weixin-java| 小程序与公众号
 qcloudsms| 腾讯云短信
 ehcache| 缓存
 poi |excel 导出
+hibernator |验证框架
+

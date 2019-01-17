@@ -2,16 +2,21 @@ package com.shuyu.spring.template.module.user.controller;
 
 
 import com.shuyu.spring.template.annotation.LoginUser;
+import com.shuyu.spring.template.config.GlobalConfig;
 import com.shuyu.spring.template.module.user.entity.User;
 import com.shuyu.spring.template.module.user.service.IUserService;
 import com.shuyu.spring.template.utils.ResponseUtil;
+import com.shuyu.spring.template.utils.UserUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.util.DigestUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import javax.validation.Valid;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -29,20 +34,20 @@ public class UserController {
     public IUserService userService;
 
     @GetMapping("/info")
-    public Object getInfo(@LoginUser User user) {
-        if (user == null || user.getAccount() == null) {
-            return ResponseUtil.fail(500, "用户信息异常");
-        }
+    public Object getInfo(@LoginUser @Valid User user) {
         return ResponseUtil.ok(user);
     }
 
-    @GetMapping("/test/permission")
+    @PostMapping("/add")
     @RequiresRoles({"admin"})
-    public Object test(@LoginUser User user) {
-        if (user == null || user.getAccount() == null) {
-            return ResponseUtil.fail(500, "用户信息异常");
+    public Object add(@RequestBody @Valid User user) {
+        User db = userService.getByAccount(user.getAccount());
+        if (db != null) {
+            return ResponseUtil.badArgument("用户已存在");
         }
-        return ResponseUtil.ok(user);
+        UserUtils.initCreateUser(user);
+        userService.save(user);
+        return ResponseUtil.ok();
     }
 
 }

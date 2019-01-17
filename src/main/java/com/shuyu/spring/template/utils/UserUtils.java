@@ -1,8 +1,8 @@
 package com.shuyu.spring.template.utils;
 
 import com.shuyu.spring.template.config.GlobalConfig;
+import com.shuyu.spring.template.module.role.entity.UserRole;
 import com.shuyu.spring.template.module.user.entity.User;
-import com.shuyu.spring.template.module.user.entity.UserRole;
 import org.springframework.util.DigestUtils;
 
 import java.time.LocalDateTime;
@@ -27,5 +27,17 @@ public class UserUtils {
         user.setAvatar("");
         return user;
     }
+
+    public static void initCreateUser(User user) {
+        user.setCreatetime(LocalDateTime.now());
+        user.setPassword(DigestUtils.md5DigestAsHex(GlobalConfig.DEFAULT_PW.getBytes()));
+        user.setDeptid(0);
+        user.setParentid("");
+        user.setStatus(1);
+        user.setVersion(0);
+        user.setSalt("");
+        user.setEmail("");
+    }
+
 
 }
