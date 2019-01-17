@@ -1,6 +1,6 @@
 # SpringBootTemplate
 
-自用型 SpringBoot 轻量级脚手架，内置中小型项目常用功能，前后端分离，token 校验。
+自用型 SpringBoot 轻量级脚手架，内置中小型项目常用功能，前后端分离，token 校验。不定时更新
 
 类型 | 功能
 -------- | ---
