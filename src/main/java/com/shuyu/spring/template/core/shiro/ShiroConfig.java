@@ -8,6 +8,7 @@ import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSource
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -21,17 +22,22 @@ import java.util.Map;
  */
 @Configuration
 public class ShiroConfig {
+
     /**
      * 先走 filter ，然后 filter 如果检测到请求头存在 token，则用 token 去 login，走 Realm 去验证
      */
     @Bean
-    public ShiroFilterFactoryBean shiroFilterFactory(SecurityManager securityManager) {
+    public ShiroFilterFactoryBean shiroFilterFactory(ManagementProperties managementProperties, SecurityManager securityManager) {
         ShiroFilterFactoryBean factoryBean = new ShiroFilterFactoryBean();
 
         // 添加自己的过滤器并且取名为jwt
         Map<String, Filter> filterMap = new HashMap<>();
         //设置我们自定义的JWT过滤器
         filterMap.put("jwt", new JWTFilter());
+
+        //设置 actuator 的management
+        filterMap.put("management", new ManagementFilter(managementProperties));
+
         factoryBean.setFilters(filterMap);
         factoryBean.setSecurityManager(securityManager);
         // 设置无权限时跳转的 url;
@@ -39,6 +45,9 @@ public class ShiroConfig {
         Map<String, String> filterRuleMap = new HashMap<>();
         // 所有请求通过我们自己的JWT Filter
         filterRuleMap.put("/**", "jwt");
+
+        // 所有 management 请求通过我们自己的management Filter
+        filterRuleMap.put("/management/**", "management");
 
         // 访问 /unauthorized/** 不通过JWTFilter
         filterRuleMap.put("/unauthorized/**", "anon");

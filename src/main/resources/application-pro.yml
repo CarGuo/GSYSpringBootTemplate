@@ -54,3 +54,10 @@ spring:
 # win关闭进程
 # taskkill /F /pid 26768
 
+
+shiro:
+  actuator:
+    management:
+      username: admin
+      password: 123.guo.456
+

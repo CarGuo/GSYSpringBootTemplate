@@ -37,3 +37,10 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+shiro:
+  actuator:
+    management:
+      username: admin
+      password: 654321

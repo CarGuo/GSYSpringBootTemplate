@@ -52,3 +52,17 @@ sms:
 context:
   listener:
     classes: com.shuyu.spring.template.config.ApplicationEventListener
+
+#启用shutdown endpoint的HTTP访问
+management:
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+
+#http://127.0.0.1:8086/management/shutdown
+#Content-Type: application/json

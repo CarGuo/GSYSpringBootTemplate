@@ -30,7 +30,7 @@ public class ApplicationEventListener implements ApplicationListener {
             // 应用停止
         } else if (event instanceof ContextClosedEvent) {
             // 应用关闭
-            System.out.print("CacheManager ALL_CACHE_MANAGERS shutdown");
+            System.out.print("\nCacheManager ALL_CACHE_MANAGERS shutdown\n");
             // 关闭的时候 刷到磁盘
             (CacheManager.ALL_CACHE_MANAGERS.get(0)).shutdown();
         } else {
