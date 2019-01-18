@@ -55,6 +55,8 @@ context:
 
 #启用shutdown endpoint的HTTP访问
 management:
+  server:
+    port: 8087
   endpoints:
     web:
       base-path: /management
@@ -63,6 +65,8 @@ management:
   endpoint:
     shutdown:
       enabled: true
+    health:
+      show-details: always
 
 #http://127.0.0.1:8086/management/shutdown
 #Content-Type: application/json
