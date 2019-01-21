@@ -1,0 +1,45 @@
+version: '3'
+services:
+#  nginx:
+#    container_name: v-nginx
+#    image: nginx:1.13
+#    restart: always
+#    ports:
+#      - 80:80
+#      - 443:443
+#    volumes:
+#      - ./nginx/conf.d:/etc/nginx/conf.d
+
+  mysql:
+    container_name: mysql
+    build:
+      context: .
+      dockerfile: mysqldb-dockerfile
+    image: mysql/mysql-server:5.7
+    environment:
+      MYSQL_DATABASE: template
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_HOST: '%'
+    #外网通过 33060 映射到 内网 3306 端口
+    ports:
+      - "33060:3306"
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d/
+
+  app:
+    ports:
+      - "8086:8086"
+    restart: always
+    build: .
+    working_dir: /app
+    volumes:
+      - .:/app
+      - ~/.m2:/root/.m2
+    expose:
+      - "8086"
+    depends_on:
+      #- nginx
+      - mysql
+    command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker

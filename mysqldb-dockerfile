@@ -1,0 +1,2 @@
+ADD /sql/template.sql /docker-entrypoint-initdb.d/
+
