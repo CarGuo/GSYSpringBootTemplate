@@ -2,6 +2,9 @@ package com.shuyu.spring.template.module.user.service;
 
 import com.shuyu.spring.template.module.user.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.shuyu.spring.template.module.user.entity.UserDateStatistics;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,4 +19,6 @@ public interface IUserService extends IService<User> {
     User getByAccount(String account);
 
     User getUserInfo(String account);
+
+    List<UserDateStatistics> selectDateStatistics();
 }

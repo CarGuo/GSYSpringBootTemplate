@@ -1,10 +1,13 @@
 package com.shuyu.spring.template.module.user.service.impl;
 
 import com.shuyu.spring.template.module.user.entity.User;
+import com.shuyu.spring.template.module.user.entity.UserDateStatistics;
 import com.shuyu.spring.template.module.user.mapper.UserMapper;
 import com.shuyu.spring.template.module.user.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -25,5 +28,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public User getUserInfo(String account) {
         return baseMapper.getUserInfo(account);
+    }
+
+    @Override
+    public List<UserDateStatistics> selectDateStatistics() {
+        return baseMapper.selectDateStatistics();
     }
 }

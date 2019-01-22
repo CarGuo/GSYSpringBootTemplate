@@ -1,6 +1,7 @@
 
 ##### 显示mysql的属性
 ##### SHOW VARIABLES WHERE Variable_name LIKE 'character_set_%' OR Variable_name LIKE 'collation%'; 
+##### select @@global.sql_mode  ONLY_FULL_GROUP_BY error
 
 ##### java -jar xxx.jar --spring.profiles.active=dev & 表示使用测试环境的配置
 ##### java -jar xxx.jar --spring.profiles.active=pro & 表示使用生产环境的配置

@@ -22,5 +22,11 @@
     </select>
 
 
+    <select id="selectDateStatistics"
+            resultType="com.shuyu.spring.template.module.user.entity.UserDateStatistics">
+       select DATE_FORMAT(createtime,'%Y-%m-%d') as day, count(createtime) as count from user GROUP BY date_format(day, '%Y-%m-%d')
+    </select>
+
+
 
 </mapper>

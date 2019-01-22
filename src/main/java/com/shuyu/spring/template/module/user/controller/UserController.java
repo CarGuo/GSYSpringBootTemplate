@@ -52,5 +52,12 @@ public class UserController {
         return ResponseUtil.ok(data);
     }
 
+
+    @GetMapping("/statistics")
+    @RequiresRoles({"admin"})
+    public Object getStatistics() {
+        return ResponseUtil.ok(userService.selectDateStatistics());
+    }
+
 }
 

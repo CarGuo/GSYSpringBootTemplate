@@ -30,6 +30,7 @@ services:
       --init_connect='SET NAMES utf8'
     volumes:
       - ./sql:/docker-entrypoint-initdb.d/
+      - ./sql/my.cnf:/etc/my.cnf
 
   app:
     ports:
