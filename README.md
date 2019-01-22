@@ -2,6 +2,8 @@
 
 自用型 SpringBoot 轻量级脚手架，内置中小型项目常用功能，前后端分离，token 校验，Docker容器，不定时更新。
 
+> CentOS 上只需要安装 Docker + Docker-Compose 即可部署。
+
 类型 | 功能
 -------- | ---
 jwt |token签发
