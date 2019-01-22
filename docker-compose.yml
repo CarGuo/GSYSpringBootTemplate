@@ -1,14 +1,14 @@
 version: '3'
 services:
-#  nginx:
-#    container_name: v-nginx
-#    image: nginx:1.13
-#    restart: always
-#    ports:
-#      - 80:80
-#      - 443:443
-#    volumes:
-#      - ./nginx/conf.d:/etc/nginx/conf.d
+  nginx:
+    container_name: v-nginx
+    image: nginx:1.13
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
 
   mysql:
     container_name: mysql
@@ -43,7 +43,7 @@ services:
     expose:
       - "8086"
     depends_on:
-      #- nginx
+      - nginx
       - mysql
     command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker
     environment:
