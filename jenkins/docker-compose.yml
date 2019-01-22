@@ -1,0 +1,14 @@
+version: '3'
+services:
+  jenkins:
+    image: 'jenkins/jenkins:lts'
+    container_name: jenkins
+    restart: always
+    ports:
+      - '8080:8080'
+      - '50000:50000'
+    volumes:
+      - '/var/jenkins_home:/var/jenkins_home'
+      - '/usr/bin/docker:/usr/bin/docker'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/usr/lib64/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7'
