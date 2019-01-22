@@ -47,6 +47,8 @@
 ##### 重启App1
 ##### docker-compose restart App1 
 
+##### 强制重新创建
+##### docker-compose up -d --force-recreate
 
 
 ##### docker-compose exec App1 bash

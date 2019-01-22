@@ -29,6 +29,8 @@ services:
       --default-time-zone=+8:00
       --init_connect='SET NAMES utf8'
     volumes:
+      # 保存mysql
+      #- ./mysql/data/:/var/lib/mysql/
       - ./sql:/docker-entrypoint-initdb.d/
       - ./sql/my.cnf:/etc/my.cnf
 
