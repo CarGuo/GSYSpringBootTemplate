@@ -36,7 +36,7 @@ public class UserUtils {
         user.setStatus(1);
         user.setVersion(0);
         user.setSalt("");
-        user.setEmail("");
+        user.setEmail(user.getEmail());
     }
 
 

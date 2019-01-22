@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.io.Serializable;
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shuyu.spring.template.module.role.entity.UserRole;
 import lombok.Data;
@@ -105,6 +106,7 @@ public class User implements Serializable {
     /**
      * 是否被删除
      */
+    @TableLogic
     private Integer deleted;
 
     /**

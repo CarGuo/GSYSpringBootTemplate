@@ -1,5 +1,6 @@
 
-
+##### 显示mysql的属性
+##### SHOW VARIABLES WHERE Variable_name LIKE 'character_set_%' OR Variable_name LIKE 'collation%'; 
 
 ##### java -jar xxx.jar --spring.profiles.active=dev & 表示使用测试环境的配置
 ##### java -jar xxx.jar --spring.profiles.active=pro & 表示使用生产环境的配置
@@ -41,3 +42,29 @@
 
 ##### 状态
 ##### docker-compose ps
+
+##### 重启App1
+##### docker-compose restart App1 
+
+
+
+##### docker-compose exec App1 bash
+##### ping App2
+
+
+``` 
+build 构建或重建服务
+help 命令帮助
+kill 杀掉容器
+logs 显示容器的输出内容
+port 打印绑定的开放端口
+ps 显示容器
+pull 拉取服务镜像
+restart 重启服务
+rm 删除停止的容器
+run 运行一个一次性命令
+scale 设置服务的容器数目
+start 开启服务
+stop 停止服务
+up 创建并启动容器
+```

@@ -12,19 +12,21 @@ services:
 
   mysql:
     container_name: mysql
-    build:
-      context: .
-      dockerfile: mysqldb-dockerfile
     image: mysql/mysql-server:5.7
     environment:
       MYSQL_DATABASE: template
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_ROOT_HOST: '%'
     #外网通过 33060 映射到 内网 3306 端口
+
     ports:
       - "33060:3306"
     restart: always
-    command: --default-authentication-plugin=mysql_native_password
+    command:
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --default-time-zone=+8:00
     volumes:
       - ./sql:/docker-entrypoint-initdb.d/
 
@@ -43,3 +45,5 @@ services:
       #- nginx
       - mysql
     command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker
+    environment:
+      - TZ=Asia/Shanghai
