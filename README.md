@@ -1,6 +1,6 @@
 # SpringBootTemplate
 
-自用型 SpringBoot 轻量级脚手架，内置中小型项目常用功能，前后端分离，token 校验。不定时更新
+自用型 SpringBoot 轻量级脚手架，内置中小型项目常用功能，前后端分离，token 校验，Docker容器，不定时更新。
 
 类型 | 功能
 -------- | ---
@@ -13,4 +13,6 @@ qcloudsms| 腾讯云短信
 ehcache| 缓存
 poi |excel 导出
 hibernator |验证框架
+docker |容器
+docker-compose |编排
 
